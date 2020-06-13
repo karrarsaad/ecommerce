@@ -10,4 +10,10 @@ class Language extends Model
     protected $fillable = [
         'abbr', 'local','name', 'direction','active','created_at','updated_at'
     ];
+    public  function scopeActive($query){
+        return $query->where('active',1);
+    }
+    public  function scopeSelection($query){
+        return $query->select('abbr', 'local','name', 'direction','active');
+    }
 }
