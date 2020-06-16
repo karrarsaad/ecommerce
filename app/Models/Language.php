@@ -16,4 +16,7 @@ class Language extends Model
     public  function scopeSelection($query){
         return $query->select('abbr', 'local','name', 'direction','active');
     }
+    public  function getActiveAttribute($val){
+        return $val==1?'مفعل':'غير مفعل';
+    }
 }

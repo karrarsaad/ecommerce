@@ -42,7 +42,7 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.languages.store')}}" method="POST" enctype="multipart/form-data">
+                                        <form class="form" action="{{route('admin.languages.store')}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات اللغة </h4>
@@ -102,11 +102,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group mt-1">
                                                             <input type="checkbox" name="active"
-                                                                   id="switcheryColor4"
+                                                                   id="switcheryColor4" value="1"
                                                                    class="switchery" data-color="success"
                                                                    checked/>
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة </label>
+                                                            @error('active')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
