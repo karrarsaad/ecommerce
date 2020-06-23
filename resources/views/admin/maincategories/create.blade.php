@@ -61,7 +61,7 @@
                                                 @if(get_languages()->count()>0)
                                                     @foreach(get_languages() as $index => $lan)
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="projectinput1">  اسم القسم -{{__('messages.'.$lan->abbr)}} </label>
                                                             <input type="text" value="" id="name"
@@ -75,9 +75,9 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group" hidden="hidden">
                                                             <label for="projectinput1"> اختصار اللغة -{{__('messages.'.$lan->abbr)}} </label>
-                                                            <input type="text" value="" id="name"
+                                                            <input type="text" value="{{$lan->abbr}}" id="name"
                                                                    class="form-control"
                                                                    placeholder="مثل:- ar  "
                                                                    name="category[{{$index}}][abbr]">
