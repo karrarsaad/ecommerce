@@ -72,8 +72,17 @@
                                                                  aria-label="Basic example">
                                                                 <a href="{{route('admin.vendors.edit',$vendor->id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
-                                                                <a href="{{route('admin.vendors.delete')}}"
-                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
+                                                                <a href="{{route('admin.vendors.delete',$vendor->id)}}"
+                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف
+                                                                </a>
+                                                                <a href="{{route('admin.vendors.status',$vendor->id)}}"
+                                                                   class="btn btn-outline-cyan btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                    @if($vendor->active==0)
+                                                                        تفعيل
+                                                                    @else
+                                                                        الغاء تفعيل
+                                                                    @endif
+                                                                </a>
 
 
                                                             </div>

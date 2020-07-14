@@ -30,7 +30,7 @@ class VendorRequest extends FormRequest
             'email'  => 'required|email|unique:vendors,email,'.$this -> id,
             'category_id'  => 'required|exists:main_categories,id',
             'address'   => 'required|string|max:500',
-            'password'   => 'required|string|min:6',
+            'password'   => 'required_without:id',
         ];
     }
 

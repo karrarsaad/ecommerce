@@ -26,7 +26,7 @@ class Vendor extends Model
     }
     public function scopeSelection($query)
     {
-        return $query->select('id', 'category_id','active', 'name', 'logo', 'mobile');
+        return $query->select('id', 'category_id','active','address','email', 'name', 'logo', 'mobile');
     }
     public function category(){
        return $this->belongsTo('App\Models\MainCategory','category_id','id');
