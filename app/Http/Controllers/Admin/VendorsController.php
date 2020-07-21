@@ -47,7 +47,9 @@ class VendorsController extends Controller
                 'address' => $request->address,
                 'logo' => $filePath,
                 'category_id' => $request->category_id,
-                'password'=>$request->password
+                'password'=>$request->password,
+                'longitude'=>$request->longitude,
+                'latitude'=>$request->latitude,
 
             ]);
 
@@ -56,14 +58,14 @@ class VendorsController extends Controller
             return redirect()->route('admin.vendors')->with(['success' => 'تم الحفظ بنجاح']);
 
         } catch (\Exception $ex) {
-            //return $ex;
-           return redirect()->route('admin.vendors')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            return $ex;
+           //return redirect()->route('admin.vendors')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
         }
     }
     public function edit($id){
         try{
-           $vendor= Vendor::find($id);
+           $vendor= Vendor::Selection()->find($id);
             if(!$vendor)
                 return redirect()->route('admin.vendors')->with(['success' => 'هذا المتجر غير موجود  ']);
 

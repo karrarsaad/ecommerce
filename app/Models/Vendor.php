@@ -10,7 +10,7 @@ class Vendor extends Model
     use Notifiable;
     protected $table='vendors';
     protected $fillable = [
-        'name', 'mobile', 'address','password', 'email', 'logo', 'category_id', 'active','created_at','updated_at'
+       'longitude','latitude', 'name', 'mobile', 'address','password', 'email', 'logo', 'category_id', 'active','created_at','updated_at'
     ];
     protected $hidden = ['category_id','password'];
 
@@ -26,7 +26,7 @@ class Vendor extends Model
     }
     public function scopeSelection($query)
     {
-        return $query->select('id', 'category_id','active','address','email', 'name', 'logo', 'mobile');
+        return $query->select('longitude','latitude','id', 'category_id','active','address','email', 'name', 'logo', 'mobile');
     }
     public function category(){
        return $this->belongsTo('App\Models\MainCategory','category_id','id');

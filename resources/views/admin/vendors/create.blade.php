@@ -45,6 +45,9 @@
                                         <form class="form" action="{{route('admin.vendors.store')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
 
+                                            <input type="hidden"  value="" id="latitude" name="latitude">
+                                            <input type="hidden" value="" id="longitude"  name="longitude">
+
                                             <div class="form-group">
                                                 <label> لوغو التجار </label>
                                                 <label id="projectinput7" class="file center-block">
@@ -215,8 +218,8 @@
         $("#pac-input").focusin(function() {
             $(this).val('');
         });
-        $('#latitudef').val('');
-        $('#longitudef').val('');
+        $('#latitude').val('');
+        $('#longitude').val('');
         // This example adds a search box to a map, using the Google Place Autocomplete
         // feature. People can enter geographical searches. The search box will return a
         // pick list containing a mix of places and predicted search terms.
@@ -278,8 +281,8 @@
             function geocodeLatLng(geocoder, map, infowindow,markerCurrent) {
                 var latlng = {lat: markerCurrent.position.lat(), lng: markerCurrent.position.lng()};
                 /* $('#branch-latLng').val("("+markerCurrent.position.lat() +","+markerCurrent.position.lng()+")");*/
-                $('#latitudef').val(markerCurrent.position.lat());
-                $('#longitudef').val(markerCurrent.position.lng());
+                $('#latitude').val(markerCurrent.position.lat());
+                $('#longitude').val(markerCurrent.position.lng());
                 geocoder.geocode({'location': latlng}, function(results, status) {
                     if (status === 'OK') {
                         if (results[0]) {
@@ -364,8 +367,8 @@
                         title: place.name,
                         position: place.geometry.location
                     }));
-                    $('#latitudef').val(place.geometry.location.lat());
-                    $('#longitudef').val(place.geometry.location.lng());
+                    $('#latitude').val(place.geometry.location.lat());
+                    $('#longitude').val(place.geometry.location.lng());
                     if (place.geometry.viewport) {
                         // Only geocodes have viewport.
                         bounds.union(place.geometry.viewport);
@@ -389,8 +392,8 @@
             var trainindIdArray = newString2.split(',');
             var lat = trainindIdArray[0];
             var Lng  = trainindIdArray[1];
-            $("#latitudef").val(lat);
-            $("#longitudef").val(Lng);
+            $("#latitude").val(lat);
+            $("#longitude").val(Lng);
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&libraries=places&callback=initAutocomplete&language=ar&region=EG
